@@ -3,43 +3,105 @@ class TestChartController < ApplicationController
 # in controller
 def index
   #ofc2(width, height, url, id =Time.now.usec, flash_attributes = {}, flash_params = {})
-  @graph = ofc2(650,300, 'test_char/radar')
+  @graph = open_flash_chart_object(600,300, '/test_chart/graph_code_radar')
 end 
 
-#in controller which is generating data for charts (for me it's charts_ofc2)
-  
-  def radar
-    default_dot = OFC2::HollowDot.new(:colour => '#45909F', :dot_size =>5)
+def graph_code_radar
+    # based on this example - http://teethgrinder.co.uk/open-flash-chart-2/radar-chart-lines.php
+#    $chart = new open_flash_chart();
+     chart = OpenFlashChart.new
+#    $chart->set_title( new title( 'Radar Chart' ) );
+     chart.set_title(Title.new('Radar Chart'))
+#    $line_1 = new line_hollow();
+     line_1 = LineHollow.new
+#    $line_1->set_values(array(3, 4, 5, 4, 3, 3, 2.5));
+     line_1.set_values(Array.new([3, 4, 5, 4, 3, 3, 2.5]))
+#    $line_1->set_halo_size( 2 );
+     line_1.set_halo_size( 2 )
+#    $line_1->set_width( 1 );
+     line_1.set_width( 1 )
+#    $line_1->set_dot_size( 3 );
+     line_1.set_dot_size( 3 )
+#    $line_1->set_colour( '#FBB829' );
+     line_1.set_colour( '#FBB829' )
+#    $line_1->set_tooltip( "Gold<br>#val#" );
+     line_1.set_tooltip( "Gold<br>#val#" )
+#    $line_1->set_key( 'Mr Gold', 10 );
+     line_1.set_key( 'Mr Gold', 10 )
 
-    area = OFC2::Area.new(
-      :values => [3, 4, 5, 4, 3, 3, 2.5],
-      :fill => '#45909F',
-      :text =>'radar',
-      :colour => '#45909F',
-      :width => 1,
-      :dot_style => default_dot,
-      :fill_alpha => 0.4,
-      :loop => true #important!, join last point with first
-    )
+#    $line_2 = new line_dot();
+     line_2 = LineDot.new
+#    $line_2->set_values(array(2, 2, 2, 2, 2, 2, 2));
+     line_2.set_values(Array.new([2, 2, 2, 2, 2, 2, 2]));
+#    $line_2->set_halo_size( 2 );
+     line_2.set_halo_size( 2 )
+#    $line_2->set_width( 1 );
+     line_2.set_width( 1 )
+#    $line_2->set_dot_size( 3 );
+     line_2.set_dot_size( 3 )
+#    $line_2->set_colour( '#8000FF' );
+     line_2.set_colour( '#8000FF' )
+#    $line_2->set_tooltip( "Purple<br>#val#" );
+     line_2.set_tooltip( "Purple<br>#val#" )
+#    $line_2->set_key( 'Mr Purple', 10 );
+     line_2.set_key( 'Mr Purple', 10 )
+#    $line_2->loop();
+     line_2.loop() # to close the loop
 
-    x_labels = OFC2::RadarAxisLabels.new
-    x_labels.colour = '#9F819F'
-    x_labels.labels = %w(0 1 2 3 4 5)
+#// add the area object to the chart:
+#    $chart->add_element( $line_1 );
+     chart.add_element( line_1 )
+#    $chart->add_element( $line_2 );
+     chart.add_element( line_2 )
+#    
+#    $r = new radar_axis( 5 );
+     r = RadarAxis.new( 5 )
 
-    x = OFC2::RadarAxis.new
-    x.max = 5
-    x.colour = '#EFD1EF'
-    x.grid_colour = '#EFD1EF'
-    x.labels = x_labels
+#    $r->set_colour( '#DAD5E0' );
+     r.set_colour( '#DAD5E0' )
+#    $r->set_grid_colour( '#DAD5E0' );
+     r.set_grid_colour( '#DAD5E0' )
+#    $labels = new radar_axis_labels( array('Zero','','','Middle','','High') );
+     labels = RadarAxisLabels.new(Array.new(['Zero','','','Middle','','High']))
+#    $labels->set_colour( '#9F819F' );
+     labels.set_colour( '#9F819F' )
+#    $r->set_labels( $labels );
+     r.set_labels( labels );
 
-    tooltip = OFC2::Tooltip.new(:mouse => 1)
+#    $spoke_labels = new radar_spoke_labels(array(
+#        'Strength',
+#        'Smarts',
+#        'Sweet<br>Tooth',
+#        'Armour',
+#        'Max Hit Points',
+#        '???',
+#        'Looks Like a Monkey') );
+    spoke_labels = RadarSpokeLabels.new(Array.new([
+        'Strength',
+        'Smarts',
+        'Sweet<br>Tooth',
+        'Armour',
+        'Max Hit Points',
+        '???',
+        'Looks Like a Monkey']))
 
-    chart = OFC2::Graph.new
-    chart.title = OFC2::Title.new( :text => action_name.humanize , :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
-    chart.radar_axis= x
-    chart.tooltip = tooltip
-    chart << area
-    render :text => chart.render
+#    $spoke_labels->set_colour( '#9F819F' );
+     spoke_labels.set_colour( '#9F819F' )
+#    $r->set_spoke_labels( $spoke_labels );
+     r.set_spoke_labels( spoke_labels )
+#    $chart->set_radar_axis( $r );
+     chart.set_radar_axis( r )
+#    $tooltip = new tooltip();
+     tooltip = Tooltip.new()
+#    $tooltip->set_proximity();
+     tooltip.set_proximity()
+#    $chart->set_tooltip( $tooltip );
+     chart.set_tooltip( tooltip )
+#    $chart->set_bg_colour( '#ffffff' );
+     chart.set_bg_colour( '#ffffff' )
+#    echo $chart->toPrettyString();
+    render :text => chart.to_s
   end
+
 
 end
