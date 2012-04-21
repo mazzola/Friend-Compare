@@ -1,0 +1,27 @@
+  <div id="center"><div id="fig">
+    <center id="title">
+      Personality Results
+    </center>
+    <script type="text/javascript+protovis">
+
+   var results =  <%= @results.html_safe%>; 
+
+      /* Scales for radius, angle, and fill. */
+      var radius = pv.Scale.linear(0, 100).range(0, 275),
+          angle = (2*Math.PI)/10;          
+          //angle = pv.Scale.linear(0, 10).range(0, 2*Math.PI);
+
+      var vis = new pv.Panel()
+          .width(400)
+          .height(400);
+
+      /* Add a panel per month, and sort causes by that month's deaths. */
+      vis.add(pv.Wedge)
+          .data(results)
+          .angle(angle)
+          .outerRadius(function(d) d*100);
+          
+      vis.render();
+
+    </script>
+  </div></div>

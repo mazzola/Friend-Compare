@@ -1,4 +1,9 @@
 FriendCompare::Application.routes.draw do
+  get "charts/rose_chart"
+
+#  get "charts/bar_chart"
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
