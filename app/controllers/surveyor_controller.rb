@@ -11,7 +11,7 @@ module SurveyorControllerCustomMethods
      @title = "Please Take This Survey"
   end
   def create
-    super
+    redirect_to :action => :new
   end
   def show
     super
