@@ -82,6 +82,88 @@ survey "Real" do
     a "5" 
   end
   
+  section "Schwartz 1" do
+    # A label is a question that accepts no answers
+    label "Please select how strongly you agree (5 Highest)"    
+
+    q1 "Having true friendship", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5"   
+    
+    q2 "Using creativity", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5" 
+    
+    
+    q3 "Protecting the enviornment", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5" 
+    
+    
+    q4 "having national security", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5" 
+    
+    q5 "Having self-respect", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5" 
+    
+    
+    q6 "Having a varied life", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5" 
+    
+    
+    q7 "Accepting my portion in life", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5" 
+    
+    
+    q8 "Honoring parents and elders", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5" 
+    
+    
+    q9 "Having pleasure", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5" 
+    
+    
+    q10 "Having social power", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5" 
+  end
+  
    section "DeYoung 2" do
     # A label is a question that accepts no answers
     label "Please select how strongly you agree (5 Highest)"    
@@ -164,6 +246,88 @@ survey "Real" do
     a "5" 
   end
   
+  section "Schwartz 2" do
+    # A label is a question that accepts no answers
+    label "Please select how strongly you agree (5 Highest)"    
+
+    q1 "Capable", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5"   
+    
+    q2 "Polite", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5" 
+    
+    
+    q3 "Curious", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5" 
+    
+    
+    q4 "Devout", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5" 
+    
+    q5 "Successful", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5" 
+    
+    
+    q6 "Clean", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5" 
+    
+    
+    q7 "Broad-minded", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5" 
+    
+    
+    q8 "Healthy", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5" 
+    
+    
+    q9 "Helpful", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5" 
+    
+    
+    q10 "Daring", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5" 
+  end
+  
    section "DeYoung 3" do
     # A label is a question that accepts no answers
     label "Please select how strongly you agree (5 Highest)"    
@@ -239,6 +403,88 @@ survey "Real" do
     
     
     q10 "Can handle a lot of information", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5" 
+  end
+  
+  section "Schwartz 3" do
+    # A label is a question that accepts no answers
+    label "Please select how strongly you agree (5 Highest)"    
+
+    q1 "Having freedom", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5"   
+    
+    q2 "Having wealth", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5" 
+    
+    
+    q3 "Having social order", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5" 
+    
+    
+    q4 "Having an exciting life", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5" 
+    
+    q5 "Enjoying life", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5" 
+    
+    
+    q6 "Having mature love", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5" 
+    
+    
+    q7 "Having authority", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5" 
+    
+    
+    q8 "Having respect for tradition", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5" 
+    
+    
+    q9 "Having a world of beauty", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5" 
+    
+    
+    q10 "Using self-disipline", :pick => :one, :display_type => :inline
     a "1"
     a "2"
     a "3"
@@ -819,103 +1065,5 @@ section "DeYoung 7" do
     a "3"
     a "4"
     a "5" 
-  end
-  
-  section "Complicated questions" do
-    
-    # Grids are useful for repeated questions with the same set of answers, which are specified before the questions
-    grid "Tell us how often do you cover these each day" do
-      a "1"
-      a "2"
-      a "3"
-      q "Head", :pick => :one
-      q "Knees", :pick => :one
-      q "Toes", :pick => :one
-    end
-    
-    # "grid" is a shortcut for group with :display_type => :grid
-    # The answers will be repeated every 10 rows, but long grids aren't recommended as they are generally tedious
-    grid "Tell us how you feel today day" do
-      a "-2"
-      a "-1"
-      a "0"
-      a "1"
-      a "2"
-      q "down|up" , :pick => :one
-      q "sad|happy", :pick => :one
-      q "limp|perky", :pick => :one
-    end
-    
-    grid "For each of the car types checked, what type of options would you prefer?" do
-      a "Leather seats"
-      a "Shiny rims"
-      a "Subwoofer"
-      a "Sunroof"
-      a "Turbocharger"
-      q "SUV", :pick => :any
-      q "Sedan", :pick => :any
-      q "Coupe", :pick => :any
-      q "Convertible", :pick => :any
-      q "Minivan", :pick => :any
-      q "Crossover", :pick => :any
-      q "Wagon", :pick => :any
-      q "Other", :pick => :any
-    end
-    
-    q "Please rank the following foods based on how much you like them"
-    a "|pizza", :integer
-    a "|salad", :integer
-    a "|sushi", :integer
-    a "|ice cream", :integer
-    a "|breakfast ceral", :integer
-    
-    # :other, :string allows someone to specify both the "other" and some other information
-    q "Choose your favorite utensils and enter frequency of use (daily, weekly, monthly, etc...)", :pick => :any
-    a "spoon", :string
-    a "fork", :string
-    a "knife", :string
-    a :other, :string
-    
-    q_car "Do you own a car?", :pick => :one
-    a_y "Yes"
-    a_n "No"
-    
-    # Repeaters allow multiple responses to a question or set of questions
-    repeater "Tell us about the cars you own" do
-      dependency :rule => "A"
-      condition_A :q_car, "==", :a_y
-      q "Make", :pick => :one, :display_type => :dropdown
-      a "Toyota"
-      a "Ford"
-      a "GMChevy"
-      a "Ferrari"
-      a "Tesla"
-      a "Honda"
-      a "Other weak brand"
-      q "Model"
-      a :string
-      q "Year"
-      a :string
-    end
-    
-    repeater "Tell us the name and age of your siblings" do
-      q "Sibling"
-      a "Name", :string
-      a "Age|years", :integer
-    end
-
-  end
-  
-  section " More questions" do
-    
-    # Grids are useful for repeated questions with the same set of answers, which are specified before the questions
-    grid "Tell us how often do you cover these each day" do
-      a "1"
-      a "2"
-      a "3"
-      q "Head", :pick => :one
-      q "Knees", :pick => :one
-      q "Toes", :pick => :one
-    end
   end
 end

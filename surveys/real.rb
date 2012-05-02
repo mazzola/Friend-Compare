@@ -574,6 +574,88 @@ survey "Real" do
     a "5" 
   end
   
+  section "Schwartz 4" do
+    # A label is a question that accepts no answers
+    label "Please select how strongly you agree (5 Highest)"    
+
+    q1 "Ambitious", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5"   
+    
+    q2 "Independent", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5" 
+    
+    
+    q3 "Responsible", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5" 
+    
+    
+    q4 "Forgiving", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5" 
+    
+    q5 "Obedient", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5" 
+    
+    
+    q6 "Loyal", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5" 
+    
+    
+    q7 "Intelligent", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5" 
+    
+    
+    q8 "Moderate", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5" 
+    
+    
+    q9 "Influential", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5" 
+    
+    
+    q10 "Honest", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5" 
+  end
+  
    section "DeYoung 5" do
     # A label is a question that accepts no answers
     label "Please select how strongly you agree (5 Highest)"    
@@ -649,6 +731,89 @@ survey "Real" do
     
     
     q10 "Enjoy the beauty of nature", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5" 
+  end
+  
+  
+  section "Schwartz 5" do
+    # A label is a question that accepts no answers
+    label "Please select how strongly you agree (5 Highest)"    
+
+    q1 "Humble", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5"   
+    
+    q2 "Having a world at peace", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5" 
+    
+    
+    q3 "Having a reciprocation of favors", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5" 
+    
+    
+    q4 "Choosing my own goals", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5" 
+    
+    q5 "Having inner harmony", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5" 
+    
+    
+    q6 "Preserving my public image", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5" 
+    
+    
+    q7 "Having social recognition", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5" 
+    
+    
+    q8 "Living a spiritual life", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5" 
+    
+    
+    q9 "Having unity with nature", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5" 
+    
+    
+    q10 "Having wisdom", :pick => :one, :display_type => :inline
     a "1"
     a "2"
     a "3"
@@ -737,7 +902,57 @@ survey "Real" do
     a "4"
     a "5" 
   end
+  
+  section "Schwartz 6" do
+    # A label is a question that accepts no answers
+    label "Please select how strongly you agree (5 Highest)"    
 
+    q1 "Having family security", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5"   
+    
+    q2 "Having social justice", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5" 
+    
+    
+    q3 "Having a sense of belonging", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5" 
+    
+    
+    q4 "Having meaning in life", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5" 
+    
+    q5 "Showing detachment", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5" 
+    
+    
+    q6 "Having equality", :pick => :one, :display_type => :inline
+    a "1"
+    a "2"
+    a "3"
+    a "4"
+    a "5"
+    
+  end
 
 section "DeYoung 7" do
     # A label is a question that accepts no answers
