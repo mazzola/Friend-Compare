@@ -10,13 +10,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120501020523) do
+ActiveRecord::Schema.define(:version => 20120503030568) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
     t.text     "text"
     t.text     "short_text"
     t.text     "help_text"
+    t.integer  "factor"
+    t.integer  "aspect"
     t.integer  "weight"
     t.string   "response_class"
     t.string   "reference_identifier"
