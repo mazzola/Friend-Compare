@@ -1,6 +1,6 @@
 GIT
-  remote: https://github.com/NUBIC/surveyor.git
-  revision: ca60acf5959437dfbf8f0eb22a5a87efbb05f779
+  remote: git://github.com/tcw48/surveyor_FriendCompare.git
+  revision: 7f5cf23152857498054aaddd8d0e94ec6de4448c
   specs:
     surveyor (0.22.0)
       fastercsv (~> 1.5.4)
@@ -65,7 +65,7 @@ GEM
       actionpack (>= 2.3.7)
       activesupport (>= 2.3.7)
       i18n (~> 0.4)
-    haml (3.1.4)
+    haml (3.1.5)
     hashie (1.2.0)
     hike (1.2.1)
     httpauth (0.1)
