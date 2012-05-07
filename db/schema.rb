@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120503030568) do
+ActiveRecord::Schema.define(:version => 20120507002534) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20120503030568) do
     t.text     "help_text"
     t.integer  "factor"
     t.integer  "aspect"
+    t.integer  "survey_type"
     t.integer  "weight"
     t.string   "response_class"
     t.string   "reference_identifier"
@@ -35,6 +36,31 @@ ActiveRecord::Schema.define(:version => 20120503030568) do
     t.string   "default_value"
     t.string   "api_id"
     t.string   "display_type"
+  end
+
+  create_table "data", :force => true do |t|
+    t.integer "facebook_id"
+    t.integer "survey_count"
+    t.integer "volatility"
+    t.integer "withdrawal"
+    t.integer "compassion"
+    t.integer "politeness"
+    t.integer "industriousness"
+    t.integer "orderliness"
+    t.integer "enthusiasm"
+    t.integer "assertiveness"
+    t.integer "intellect"
+    t.integer "openness"
+    t.integer "universalism"
+    t.integer "benevolence"
+    t.integer "tradition"
+    t.integer "conformity"
+    t.integer "security"
+    t.integer "power"
+    t.integer "achievement"
+    t.integer "hedonism"
+    t.integer "stimulation"
+    t.integer "self_direction"
   end
 
   create_table "dependencies", :force => true do |t|
