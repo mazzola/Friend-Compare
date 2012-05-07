@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  fid: 1
+  uid: 1
+  next_quiz: 1
+
+two:
+  fid: 1
+  uid: 1
+  next_quiz: 1

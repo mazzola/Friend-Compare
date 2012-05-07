@@ -6,22 +6,119 @@
 
    var results =  <%= @results.html_safe%>; 
 
-      /* Scales for radius, angle, and fill. */
-      var radius = pv.Scale.linear(0, 100).range(0, 275),
-          angle = (2*Math.PI)/10;          
-          //angle = pv.Scale.linear(0, 10).range(0, 2*Math.PI);
+   var results2 = [ "Self-Transcendence", "Conservation", "Self-Enhancement", "Openess to Change"]; 
 
+   var results3 = [ "Universalism", "Benevolence", "Tradition", "Conformity", "Security", "Power", "Achievement", "Hedonism", "Stimulation", "Self-Direction"]
+
+   var aggregate1 = results[0]+results[1], 
+       aggregate2 = results[2]+results[3]+ results[4], 
+       aggregate3 = results[5]+results[6]+0.5*results[7], 
+       aggregate4 = 0.5*results[7]+results[8]+results[9], 
+       aggResults = [aggregate1, aggregate2, aggregate3, aggregate4]; 
+
+      /* Scales for radius, angle, and fill. */
+      var angle  = (2*Math.PI)/10,          
+          angle2 = (2*Math.PI)/4, 
+          angle3 = [ Math.PI/4, Math.PI/4 + Math.PI/6, Math.PI/4 + Math.PI/3]; 
+
+      /* Panel to hold the rose chart */ 
       var vis = new pv.Panel()
           .width(400)
-          .height(400);
+          .height(210);
 
-      /* Add a panel per month, and sort causes by that month's deaths. */
+      /* Categories Wedges */
+         vis.add(pv.Wedge)
+         .data(results2)
+         .angle(angle2)
+         .outerRadius(100)
+         .fillStyle(pv.colors("rgba(255,250, 205,.5)", "rgba(60,179,113,.5)", "rgba(65,105,225,.5)", "rgba(250,128,114,.5)"))
+         .strokeStyle(pv.colors("rgb(255,255,100)", "rgb(60, 185, 100)", "rgb(45,85, 205)", "rgb(255,100,100)"))     
+ 
+      /* Results Wedges quadrant 1 */
       vis.add(pv.Wedge)
-          .data(results)
-          .angle(angle)
-          .outerRadius(function(d) d*100);
-          
+          .data(results.slice(0,2))
+          .angle(Math.PI/(2*2))
+          .outerRadius(function(d) d*100)
+          .fillStyle(pv.colors("rgb(255,255,0)", "rgb(173,255,47)"))
+
+        /*Text label wedges quadrant 1 */
+        vis.add(pv.Wedge)
+          .data(results3.slice(0,2))
+          .angle(Math.PI/4)  
+          .outerRadius(100)
+          .fillStyle(pv.colors("rgba(255,255,255,0)")) 
+          .anchor("outer").add(pv.Label)
+              .textMargin(20)
+              .text(function(d) d).anchorTarget();
+      
+        var total = -Math.PI/6; 
+        /* Results Wedge quadrant 2*/ 
+        vis.add(pv.Wedge)
+           .data(results.slice(2,5))
+           .startAngle( function() total =total + Math.PI/6)
+           .angle(Math.PI/(2*3))
+           .outerRadius(function(d) d*100)
+           .fillStyle(pv.colors( "rgb(32,178,170)", "rgb(34,139,34)",  "rgb(64,224,208)")) 
+      
+
+        var totalLabel = -Math.PI/6;
+        /* text label wedges quadrant 2 */ 
+        vis.add(pv.Wedge)
+           .data(results3.slice(2,5))
+           .startAngle(function() totalLabel = totalLabel +Math.PI/6)
+           .angle(Math.PI/(2*3))
+           .outerRadius(100)
+           .fillStyle(pv.colors("rgba(255,255,255,0)"))
+           .anchor("outer").add(pv.Label)
+              .textMargin(20)
+              .text(function(d) d).anchorTarget(); 
+
+        
+        /* results quadrant 3*/ 
+        var total3 = Math.PI/3-.1;
+        vis.add(pv.Wedge)
+           .data(results.slice(5,11))
+           .startAngle( function() total3 =total3 + Math.PI/5)
+           .angle(Math.PI/(5))
+           .outerRadius(function(d) d*100)
+           .fillStyle(pv.colors( "rgb(0,191,255)", "rgb(30,144,255)", "rgb(106,90,205)", "rgb(178,34,34)", "rgb(255,0,0)"))
+  
+      /* labels quadrant 3*/ 
+      var totalLabel3 = Math.PI/3 -.1;  
+      vis.add(pv.Wedge)
+          .data(results3.slice(5,11))
+          .startAngle( function() totalLabel3 = totalLabel3 + Math.PI/5)
+          .angle(Math.PI/5)
+          .outerRadius(100)
+          .fillStyle(pv.colors("rgba(255,255,255,0)"))
+          .anchor("outer").add(pv.Label)
+            .textMargin(20)
+            .text(function(d) d).anchorTarget();
+
       vis.render();
+
+
+      var vis2 = new pv.Panel()
+          .width(400)
+          .height(200); 
+
+
+          x = pv.Scale.ordinal(pv.range(10)).splitBanded(0, 400, 4/5);
+
+      vis2.add(pv.Bar)
+          .data(aggResults)
+          .height(function(d) d*100)
+          .left(function() 125+x(this.index))
+          .bottom(0)
+          .width(20)
+          .fillStyle(pv.colors("rgba(255,250, 205,.5)", "rgba(60,179,113,.5)", "rgba(65,105,225,.5)", "rgba(250,128,114,.5)"))
+          .strokeStyle(pv.colors("rgb(255,255,100)", "rgb(60, 185, 100)", "rgb(45,85, 205)", "rgb(255,100,100)"))   
+          .anchor("center").add(pv.Label)
+            .text(function() results2[this.index])
+            .textAngle(-Math.PI/2);
+
+      vis2.render();
+
 
     </script>
   </div></div>
