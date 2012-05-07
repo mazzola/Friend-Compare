@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rake', '0.9.2'
 gem 'pg'
 gem 'rails', '3.2.3'
+gem 'omniauth-facebook'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

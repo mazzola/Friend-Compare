@@ -2,8 +2,12 @@ module HomeHelper
 	def host
     request.env['HTTP_HOST']
   end
-
-  def scheme
+	
+	def auth_path
+  	'/auth/facebook'
+	end
+  
+	def scheme
     request.scheme
   end
 

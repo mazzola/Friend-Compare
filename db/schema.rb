@@ -17,9 +17,12 @@ ActiveRecord::Schema.define(:version => 20120507002534) do
     t.text     "text"
     t.text     "short_text"
     t.text     "help_text"
+<<<<<<< HEAD
     t.integer  "factor"
     t.integer  "aspect"
     t.integer  "survey_type"
+=======
+>>>>>>> Adding login capabilities with oauth. Added user and authentication models
     t.integer  "weight"
     t.string   "response_class"
     t.string   "reference_identifier"
@@ -38,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20120507002534) do
     t.string   "display_type"
   end
 
+<<<<<<< HEAD
   create_table "data", :force => true do |t|
     t.integer "facebook_id"
     t.integer "survey_count"
@@ -61,6 +65,14 @@ ActiveRecord::Schema.define(:version => 20120507002534) do
     t.integer "hedonism"
     t.integer "stimulation"
     t.integer "self_direction"
+=======
+  create_table "authorizations", :force => true do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+>>>>>>> Adding login capabilities with oauth. Added user and authentication models
   end
 
   create_table "dependencies", :force => true do |t|
@@ -192,6 +204,14 @@ ActiveRecord::Schema.define(:version => 20120507002534) do
   end
 
   add_index "surveys", ["access_code"], :name => "surveys_ac_idx", :unique => true
+
+  create_table "users", :force => true do |t|
+    t.integer  "fid"
+    t.integer  "uid"
+    t.integer  "next_quiz"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "validation_conditions", :force => true do |t|
     t.integer  "validation_id"

@@ -1,21 +1,12 @@
 FACEBOOK_SCOPE = 'user_likes,user_photos,user_photo_video_tags'
-def authenticator
-	@authenticator ||= Koala::Facebook::OAuth.new(344245222304466, "424d24d1bb5439f7cd491087a5a55152", url("/auth/facebook/callback"))
-end
 
 FriendCompare::Application.routes.draw do
   get "charts/rose_chart"
   match  "/surveys" => "surveyor#new"
-	root :to => "home#index"	
-	get "/auth/facebook" do
-		 session[:access_token] = nil
-		 redirect authenticator.url_for_oauth_code(:permissions => FACEBOOK_SCOPE)
-	end
-	get '/auth/facebook/callback' do
-		session[:access_token] = authenticator.get_access_token(params[:code])
-		redirect '/'
-	end
-	
+	root :to => "home#index"
+	get '/login', :to => 'auth#new', :as => :login	
+	match  '/auth/:provider/callback', :to => 'auth#create' 
+	match '/auth/failure', :to => 'auth#failure'	
 #  get "charts/bar_chart"
 
 
