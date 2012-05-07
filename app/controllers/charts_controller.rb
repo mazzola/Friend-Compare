@@ -6,7 +6,7 @@ class ChartsController < ApplicationController
   #end 
  
   def rose_chart
-	@results = [ ".67", ".5", ".1", ".2", ".3", ".23", ".37", ".56", ".21", ".95"]
+	@results = [ 0.67, 0.5, 0.1, 0.2, 0.3, 0.23, 0.37, 0.56, 0.21, 0.95]
        @results = @results.to_s
   end
  

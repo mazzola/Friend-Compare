@@ -1,6 +1,6 @@
 FriendCompare::Application.routes.draw do
   get "charts/rose_chart"
-
+  match "/surveys" => "surveyor#new"
 #  get "charts/bar_chart"
 
 
