@@ -1,6 +1,12 @@
+FACEBOOK_SCOPE = 'user_likes,user_photos,user_photo_video_tags'
+
 FriendCompare::Application.routes.draw do
   get "charts/rose_chart"
-  match "/surveys" => "surveyor#new"
+  match  "/surveys" => "surveyor#new"
+	root :to => "home#index"
+	get '/login', :to => 'auth#new', :as => :login	
+	match  '/auth/:provider/callback', :to => 'auth#create' 
+	match '/auth/failure', :to => 'auth#failure'	
 #  get "charts/bar_chart"
 
 
