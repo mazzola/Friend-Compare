@@ -13,7 +13,7 @@ class AuthController < ApplicationController
 		auth_hash = request.env['omniauth.auth']
 		@authorization = Authorization.find_by_provider_and_uid(auth_hash["provider"], auth_hash["uid"])
   	if @authorization
-  	    redirect_to: root
+  	    redirect_to :root
     else
     	#user = User.new :fid => 13453467
 			puts auth_hash.inspect
@@ -21,7 +21,7 @@ class AuthController < ApplicationController
 			user = User.new :fid => auth_hash["id"]
     	user.authorizations.build :provider => auth_hash["provider"], :uid => auth_hash["uid"]
 			user.save
-        redirect_to: root    	
+        redirect_to :root    	
   	end
 	end
 end

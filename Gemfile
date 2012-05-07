@@ -11,7 +11,7 @@ gem 'omniauth-facebook'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'surveyor', :git => 'https://github.com/NUBIC/surveyor.git'
+gem 'surveyor', :git => 'git://github.com/tcw48/surveyor_FriendCompare.git'
 group :development, :test do
    gem 'sqlite3'
 end
