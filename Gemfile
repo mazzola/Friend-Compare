@@ -1,7 +1,10 @@
 source 'https://rubygems.org'
 
 gem 'rake', '0.9.2'
-gem 'pg'
+
+group :production do 
+  gem 'pg'
+end 
 gem 'rails', '3.2.3'
 gem 'omniauth-facebook'
 
