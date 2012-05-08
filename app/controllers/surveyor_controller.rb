@@ -117,7 +117,7 @@ module SurveyorControllerCustomMethods
   def surveyor_finish
     # the update action redirects to this method if given params[:finish]
     super # available_surveys_path
-    params[:finish] = "/"
+    params[:finish] = "https://apps.facebook.com/344245222304466/"
     #params[:finish] = "/charts/rose_chart" 
   end
 end
