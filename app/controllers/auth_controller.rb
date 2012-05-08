@@ -21,7 +21,7 @@ class AuthController < ApplicationController
 			user = User.new :fid => auth_hash["id"]
     	user.authorizations.build :provider => auth_hash["provider"], :uid => auth_hash["uid"]
 			user.save
-        redirect_to :root    	
+        redirect_to 'https://apps.facebook.com/344245222304466/'   	
   	end
 	end
 end
