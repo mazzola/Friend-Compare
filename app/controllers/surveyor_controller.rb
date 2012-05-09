@@ -22,7 +22,7 @@ module SurveyorControllerCustomMethods
   		  @user    = @graph.get_object("me")
   		end
     @survey = Survey.find_by_access_code(params[:survey_code])
-    @response_set = ResponseSet.create(:survey => @survey, :user_id => (@current_user.nil? ? @current_user : @user))
+    @response_set = ResponseSet.create(:survey => @survey, :user_id => (@current_user.nil? ? @current_user : @user), :access_code => @user)
       if (@survey && @response_set)
         flash[:notice] = t('surveyor.survey_started_success')
         redirect_to(edit_my_survey_path(:survey_code => @survey.access_code, :response_set_code  => @response_set.access_code))
