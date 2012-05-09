@@ -11,18 +11,91 @@ module SurveyorControllerCustomMethods
      @title = "Please Take This Survey"
   end
   def create
-    super
-#    redirect_to :action => :new
+  	@app = {:name  => 'Friend Compare'}
+ 		# Get base API Connection
+	@graph  = Koala::Facebook::API.new(session[:access_token])
+
+	  # Get public details of current application
+  	@app  =  @graph.get_object(344245222304466)
+
+ 		if session[:access_token]
+  		  @user    = @graph.get_object("me")
+  		end
+    @survey = Survey.find_by_access_code(params[:survey_code])
+    @response_set = ResponseSet.create(:survey => @survey, :user_id => (@current_user.nil? ? @current_user : @user))
+      if (@survey && @response_set)
+        flash[:notice] = t('surveyor.survey_started_success')
+        redirect_to(edit_my_survey_path(:survey_code => @survey.access_code, :response_set_code  => @response_set.access_code))
+      else
+        flash[:notice] = t('surveyor.Unable_to_find_that_survey')
+        redirect_to surveyor_index
+      end
   end
+  
   def show
-    super
+    @response_set = ResponseSet.find_by_access_code(params[:response_set_code], :include => {:responses => [:question, :answer]})
+      if @response_set
+        @survey = @response_set.survey
+        respond_to do |format|
+          format.html #{render :action => :show}
+          format.csv {
+            send_data(@response_set.to_csv, :type => 'text/csv; charset=utf-8; header=present',:filename => "#{@response_set.updated_at.strftime('%Y-%m-%d')}_#{@response_set.access_code}.csv")
+          }
+          format.json
+        end
+      else
+        flash[:notice] = t('surveyor.unable_to_find_your_responses')
+        redirect_to surveyor_index
+      end
   end
   def edit
-    super
+    @response_set = ResponseSet.find_by_access_code(params[:response_set_code], :include => {:responses => [:question, :answer]})
+      if @response_set
+        @survey = Survey.with_sections.find_by_id(@response_set.survey_id)
+        @sections = @survey.sections
+        if params[:section]
+          @section = @sections.with_includes.find(section_id_from(params[:section])) || @sections.with_includes.first
+        else
+          @section = @sections.with_includes.first
+        end
+        set_dependents
+      else
+        flash[:notice] = t('surveyor.unable_to_find_your_responses')
+        redirect_to surveyor_index
+      end
   end
   def update
-  	aggreagate
-    super
+  	saved = false
+      ActiveRecord::Base.transaction do
+        @response_set = ResponseSet.find_by_access_code(params[:response_set_code], :include => {:responses => :answer}, :lock => true)
+        unless @response_set.blank?
+          saved = @response_set.update_attributes(:responses_attributes => ResponseSet.to_savable(params[:r]))
+          @response_set.complete! if saved && params[:finish]
+          saved &= @response_set.save
+        end
+      end
+      return redirect_with_message(surveyor_finish, :notice, t('surveyor.completed_survey')) if saved && params[:finish]
+
+      respond_to do |format|
+        format.html do
+          if @response_set.blank?
+            return redirect_with_message(available_surveys_path, :notice, t('surveyor.unable_to_find_your_responses'))
+          else
+            flash[:notice] = t('surveyor.unable_to_update_survey') unless saved
+            redirect_to edit_my_survey_path(:anchor => anchor_from(params[:section]), :section => section_id_from(params[:section]))
+          end
+        end
+        format.js do
+          ids, remove, question_ids = {}, {}, []
+          ResponseSet.trim_for_lookups(params[:r]).each do |k,v|
+            v[:answer_id].reject!(&:blank?) if v[:answer_id].is_a?(Array)
+            ids[k] = @response_set.responses.find(:first, :conditions => v, :order => "created_at DESC").id if !v.has_key?("id")
+            remove[k] = v["id"] if v.has_key?("id") && v.has_key?("_destroy")
+            question_ids << v["question_id"]
+          end
+          render :json => {"ids" => ids, "remove" => remove}.merge(@response_set.reload.all_dependencies(question_ids))
+        end
+      end
   end
   
   def aggreagate
